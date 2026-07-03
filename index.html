@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HUMAN ELEMENTS // Периодическая Система Личностей</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-atom-icon"></div>
+      <div>
+        <div class="brand-title">HUMAN ELEMENTS</div>
+        <div class="brand-subtitle">Квантовая Революция Понимания</div>
+      </div>
+    </div>
+
+    <nav class="app-nav">
+      <button class="nav-btn active" data-tab="tab-table">
+        ⚛️ Таблица
+      </button>
+      <button class="nav-btn" data-tab="tab-lab">
+        🧪 Лаборатория
+      </button>
+      <button class="nav-btn" data-tab="tab-team">
+        🧬 Молекула
+      </button>
+      <button class="nav-btn" data-tab="tab-quiz">
+        🔮 Атомный Тест
+      </button>
+      <button class="nav-btn" data-tab="tab-match">
+        ❤️ Поиск Связей
+      </button>
+      <button class="nav-btn" data-tab="tab-philosophy">
+        📖 Философия
+      </button>
+      <button class="nav-btn" data-tab="tab-support" style="border: 1px solid var(--grp-transition); color: var(--grp-transition);">
+        💎 Краудфандинг
+      </button>
+      <button class="nav-btn" data-tab="tab-viral" style="border: 1px solid var(--grp-metalloid); color: var(--grp-metalloid);">
+        🚀 Вирусный Шэринг
+      </button>
+    </nav>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="main-container">
+
+    <!-- TAB 1: PERIODIC TABLE GRID -->
+    <section id="tab-table" class="tab-content active">
+      
+      <!-- ONBOARDING HERO BANNER -->
+      <div class="onboarding-hero" style="background: linear-gradient(135deg, rgba(0, 240, 255, 0.1) 0%, rgba(160, 68, 255, 0.1) 100%); border: 1px solid var(--border-glass-bright); border-radius: 20px; padding: 1.8rem; margin-bottom: 2rem; backdrop-filter: blur(10px);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div style="max-width: 650px;">
+            <span style="background: var(--grp-metalloid); color: #000; font-weight: 800; font-size: 0.75rem; padding: 0.3rem 0.8rem; border-radius: 20px; text-transform: uppercase; tracking: 1px;">Интуитивный Навигатор</span>
+            <h2 style="font-size: 1.8rem; font-weight: 800; margin-top: 0.6rem; color: #fff;">Добро пожаловать в Human Elements! ⚛️</h2>
+            <p style="color: var(--text-muted); margin-top: 0.4rem; line-height: 1.5;">Узнайте свой психо-химический элемент, совместимость в любви и бизнесе, а также собирайте гармоничные команды на основе законов природы.</p>
+          </div>
+          <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+            <button class="btn-primary" onclick="document.querySelector('[data-tab=tab-quiz]').click()" style="background: var(--grp-alkali);">🔮 Пройти Квиз</button>
+            <button class="btn-primary" onclick="document.querySelector('[data-tab=tab-support]').click()" style="background: linear-gradient(135deg, #ffcc00 0%, #ff9933 100%); color: #000; font-weight: 700;">💎 Поддержать Проект</button>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1.5rem; pt: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+          <div style="display: flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; color: var(--text-main);">
+            <span style="font-size: 1.2rem;">1️⃣</span> Выберите элемент из таблицы
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; color: var(--text-main);">
+            <span style="font-size: 1.2rem;">2️⃣</span> Изучите 6 разделов (включая Быт)
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; color: var(--text-main);">
+            <span style="font-size: 1.2rem;">3️⃣</span> Проверьте химию союзов
+          </div>
+        </div>
+      </div>
+
+      <div class="layout-toggle-bar" style="margin-bottom: 1.5rem; display: flex; gap: 0.6rem;">
+        <button id="view-mode-table" class="chip-btn active" style="border-radius: 8px; font-size: 0.85rem; padding: 0.5rem 1rem;">⚛️ Вид: Периодическая Таблица</button>
+        <button id="view-mode-circle" class="chip-btn" style="border-radius: 8px; font-size: 0.85rem; padding: 0.5rem 1rem;">🌈 Вид: Комплиментарный Круг</button>
+      </div>
+
+      <!-- TABLE VIEW PANEL -->
+      <div id="table-view-panel">
+        <div class="section-header">
+          <div class="section-title">
+            <h1>Периодическая Система Элементов</h1>
+            <p>47+ аутентичных элементов Менделеева, сопоставленные с человеческой психофизикой</p>
+          </div>
+          <div class="filter-bar">
+            <input type="text" id="search-input" class="search-input" placeholder="🔍 Поиск элемента или навыка...">
+            <div id="group-filters" class="group-filters"></div>
+          </div>
+        </div>
+        <div id="table-grid" class="table-grid"></div>
+      </div>
+
+      <!-- CIRCLE VIEW PANEL -->
+      <div id="circle-view-panel" style="display: none; text-align: center;">
+        <div class="section-header" style="justify-content: center; text-align: center;">
+          <div class="section-title">
+            <h1>Цветовой Комплиментарный Круг Личности</h1>
+            <p>Элементы, расположенные друг напротив друга, представляют собой притягивающиеся противоположности (закон полярностей)</p>
+          </div>
+        </div>
+        <div class="circle-wrapper">
+          <div id="table-circle" class="circle-container">
+            <!-- SVG Overlay for drawing connections -->
+            <svg id="circle-connections-svg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></svg>
+            
+            <!-- Reactor core in the center -->
+            <div id="circle-reactor" class="reactor-core">
+              <div class="reactor-core-symbol">H</div>
+              <div class="reactor-core-name">Водород</div>
+              <div class="reactor-core-group">Первопроходцы</div>
+              <div class="reactor-core-complementary">Комплиментарен: Гелий [He]</div>
+            </div>
+            <!-- Element nodes will be generated dynamically -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: REACTION LAB / COLLIDER -->
+    <section id="tab-lab" class="tab-content">
+      <div class="section-header">
+        <div class="section-title">
+          <h1>Коллайдер Межличностных Реакций</h1>
+          <p>Исследуйте синтез двух элементов и влияние катализаторов на химию общения</p>
+        </div>
+      </div>
+
+      <div class="lab-controls-card" style="background: var(--bg-card); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border-glass); margin-bottom: 1.5rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+          <div>
+            <label style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.4rem;">Первичный Элемент (А)</label>
+            <select id="lab-elem-1" class="search-input" style="width: 100%;"></select>
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.4rem;">Вторичный Элемент (Б)</label>
+            <select id="lab-elem-2" class="search-input" style="width: 100%;"></select>
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.4rem;">Катализатор / Медиатор (В)</label>
+            <select id="lab-catalyst" class="search-input" style="width: 100%;"></select>
+          </div>
+        </div>
+        
+        <button id="lab-collide-btn" class="btn-primary">
+          ⚡ Запустить Квантовый Синтез Реакции
+        </button>
+      </div>
+
+      <div id="lab-result"></div>
+    </section>
+
+    <!-- TAB 3: TEAM MOLECULE BUILDER -->
+    <section id="tab-team" class="tab-content">
+      <div class="section-header">
+        <div class="section-title">
+          <h1>Сборщик Молекулы Команды</h1>
+          <p>Соберите от 2 до 5 элементов для оценки стабильности и баланса вашей группы</p>
+        </div>
+      </div>
+
+      <div class="team-builder-card" style="background: var(--bg-card); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border-glass); margin-bottom: 1.5rem;">
+        <div id="team-slots" style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1.5rem; justify-content: center;"></div>
+        
+        <button id="team-analyze-btn" class="btn-primary" style="margin-bottom: 1.5rem;">
+          📊 Рассчитать Молекулярный Вес и Стабильность
+        </button>
+
+        <h4 style="margin-bottom: 0.8rem; color: var(--text-muted); font-size: 0.9rem;">Выберите элементы для добавления в команду:</h4>
+        <div id="team-select-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 8px; max-height: 250px; overflow-y: auto;"></div>
+      </div>
+
+      <div id="team-result"></div>
+    </section>
+
+    <!-- TAB 4: QUANTUM QUIZ -->
+    <section id="tab-quiz" class="tab-content">
+      <div class="section-header">
+        <div class="section-title">
+          <h1>Квантовый Диагностический Квиз</h1>
+          <p>Пройдите экспресс-тест сценариев для определения вашего базового элемента</p>
+        </div>
+      </div>
+
+      <div id="quiz-container" style="max-width: 700px; margin: 0 auto; background: var(--bg-card); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border-glass);"></div>
+    </section>
+
+    <!-- TAB 5: MATCHMAKING & DATING -->
+    <section id="tab-match" class="tab-content">
+      <div class="section-header">
+        <div class="section-title">
+          <h1>❤️ Поиск Связей & Химия Знакомств</h1>
+          <p>Рассчитайте идеальную совместимость для глубоких любовных отношений или эффективного бизнеса</p>
+        </div>
+      </div>
+
+      <div style="background: var(--bg-card); padding: 1.8rem; border-radius: 20px; border: 1px solid var(--border-glass-bright); margin-bottom: 1.5rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-bottom: 1.5rem;">
+          <div>
+            <label style="display: block; font-size: 0.85rem; color: var(--grp-metalloid); font-weight: 700; margin-bottom: 0.4rem;">Шаг 1: Ваш определяющий элемент</label>
+            <select id="match-my-elem" class="search-input" style="width: 100%; border: 1px solid var(--grp-metalloid);"></select>
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.85rem; color: var(--grp-noble); font-weight: 700; margin-bottom: 0.4rem;">Шаг 2: Режим совместимости</label>
+            <select id="match-mode" class="search-input" style="width: 100%;">
+              <option value="love">❤️ Любовь, Отношения & Быт (Ковалентный союз)</option>
+              <option value="business">💼 Бизнес, Стартап & Сооснователи (Сплав процессов)</option>
+            </select>
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.4rem;">Группа кандидатов</label>
+            <select id="match-target-group" class="search-input" style="width: 100%;"></select>
+          </div>
+        </div>
+
+        <button id="match-find-btn" class="btn-primary" style="background: linear-gradient(135deg, #ff3366 0%, #a044ff 100%); color: #fff; font-weight: 800; font-size: 1.05rem; width: 100%; padding: 0.9rem;">
+          🔍 Рассчитать Химический Резонанс Пар
+        </button>
+      </div>
+
+      <div id="match-results-grid"></div>
+    </section>
+
+    <!-- TAB: PHILOSOPHY -->
+    <section id="tab-philosophy" class="tab-content">
+      <div class="section-header">
+        <div class="section-title">
+          <h1>📖 Философия проекта</h1>
+          <p>Погрузитесь в квантово-химический кодекс личности, законы полей и эволюции сознания</p>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; align-items: start;">
+        <!-- Left Menu Sidebar -->
+        <div id="philo-menu" style="background: var(--bg-card); padding: 1.2rem; border-radius: 16px; border: 1px solid var(--border-glass);">
+          <!-- Buttons dynamically populated -->
+        </div>
+
+        <!-- Right Article View -->
+        <div id="philo-body" style="grid-column: span 2;">
+          <!-- Article dynamically rendered -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 6: CROWDFUNDING & MONETIZATION -->
+    <section id="tab-support" class="tab-content">
+      <div class="section-header">
+        <div class="section-title">
+          <h1>💎 Квантовый Краудфандинг & Премиум Доступ</h1>
+          <p>Поддержите независимую разработку сервиса и откройте полномасштабные психо-химические отчеты</p>
+        </div>
+      </div>
+
+      <!-- Funding Progress Card -->
+      <div style="background: var(--bg-card); border-radius: 20px; border: 1px solid var(--border-glass-bright); padding: 2rem; margin-bottom: 2rem; text-align: center;">
+        <span style="color: var(--grp-transition); font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">Цель Раунда Развития</span>
+        <h2 style="font-size: 2.2rem; font-weight: 800; color: #fff; margin-top: 0.4rem;">340 000 ₽ <span style="font-size: 1.2rem; color: var(--text-muted); font-weight: 400;">из 500 000 ₽ (68%)</span></h2>
+        <div style="background: rgba(255,255,255,0.1); height: 12px; border-radius: 6px; overflow: hidden; margin: 1.2rem 0;">
+          <div style="background: linear-gradient(90deg, #ffcc00, #ff3366, #00f0ff); width: 68%; height: 100%;"></div>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">412 спонсоров уже поддержали разработку мобильного приложения и интеграцию с Telegram Stars.</p>
+      </div>
+
+      <!-- Tiers Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+        <!-- Tier 1 -->
+        <div style="background: var(--bg-card); border-radius: 20px; border: 1px solid var(--border-glass); padding: 1.8rem; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">⭐️</div>
+            <h3 style="color: #fff; font-size: 1.3rem; margin-bottom: 0.4rem;">Старт</h3>
+            <div style="font-size: 1.8rem; font-weight: 800; color: var(--grp-metalloid); margin-bottom: 1rem;">290 ₽</div>
+            <ul style="list-style: none; padding: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.5rem;">
+              <li>✓ Полный PDF-справочник 47 элементов</li>
+              <li>✓ Доступ к 6 разделам каждого портрета</li>
+              <li>✓ Бэдж «Спонсор» в профиле</li>
+            </ul>
+          </div>
+          <button class="btn-primary tier-select-btn" data-tier-name="Старт" data-tier-price="290">Выбрать Тариф</button>
+        </div>
+
+        <!-- Tier 2 -->
+        <div style="background: linear-gradient(135deg, rgba(160, 68, 255, 0.15) 0%, rgba(0, 240, 255, 0.15) 100%); border-radius: 20px; border: 2px solid var(--grp-noble); padding: 1.8rem; display: flex; flex-direction: column; justify-content: space-between; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(160,68,255,0.2);">
+          <div>
+            <span style="background: var(--grp-noble); color: #fff; font-size: 0.7rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 12px; text-transform: uppercase;">Популярный</span>
+            <div style="font-size: 2rem; margin-top: 0.5rem; margin-bottom: 0.5rem;">💎</div>
+            <h3 style="color: #fff; font-size: 1.3rem; margin-bottom: 0.4rem;">Персональный Разбор</h3>
+            <div style="font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 1rem;">990 ₽</div>
+            <ul style="list-style: none; padding: 0; color: var(--text-main); font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.5rem;">
+              <li>✓ Индивидуальный Квантовый Паспорт</li>
+              <li>✓ Полный анализ совместимости пары</li>
+              <li>✓ Доступ к Telegram Mini App боту</li>
+              <li>✓ Приоритетные обновления алгоритма</li>
+            </ul>
+          </div>
+          <button class="btn-primary tier-select-btn" data-tier-name="Персональный Разбор" data-tier-price="990" style="background: linear-gradient(135deg, #a044ff 0%, #00f0ff 100%); color: #fff;">Поддержать 990 ₽</button>
+        </div>
+
+        <!-- Tier 3 -->
+        <div style="background: var(--bg-card); border-radius: 20px; border: 1px solid var(--border-glass); padding: 1.8rem; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🚀</div>
+            <h3 style="color: #fff; font-size: 1.3rem; margin-bottom: 0.4rem;">Сооснователь</h3>
+            <div style="font-size: 1.8rem; font-weight: 800; color: var(--grp-transition); margin-bottom: 1rem;">4 900 ₽</div>
+            <ul style="list-style: none; padding: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.5rem;">
+              <li>✓ Увековечивание в Реестре Меценатов</li>
+              <li>✓ Личная сессия разбора команды со спикером</li>
+              <li>✓ Безлимитный пожизненный доступ</li>
+            </ul>
+          </div>
+          <button class="btn-primary tier-select-btn" data-tier-name="Сооснователь" data-tier-price="4900">Стать Сооснователем</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 7: VIRAL SHARING -->
+    <section id="tab-viral" class="tab-content">
+      <div class="section-header">
+        <div class="section-title">
+          <h1>🚀 Вирусный Шэринг & Распространение</h1>
+          <p>Поделитесь вашим элементом с друзьями и расскажите миру о психофизике Менделеева</p>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; align-items: start;">
+        <!-- Card Generator Panel -->
+        <div style="background: var(--bg-card); padding: 1.8rem; border-radius: 20px; border: 1px solid var(--border-glass);">
+          <h3 style="color: #fff; margin-bottom: 1rem;">Генератор Атомной Визитки</h3>
+          <label style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Выберите ваш элемент для карточки:</label>
+          <select id="viral-elem-select" class="search-input" style="width: 100%; margin-bottom: 1.5rem;"></select>
+
+          <h4 style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.8rem;">Быстрая отправка в соцсети:</h4>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1rem;">
+            <button class="btn-primary viral-share-btn" data-platform="telegram" style="background: #2AABEE; color: #fff;">✈️ Telegram</button>
+            <button class="btn-primary viral-share-btn" data-platform="whatsapp" style="background: #25D366; color: #fff;">💬 WhatsApp</button>
+            <button class="btn-primary viral-share-btn" data-platform="vk" style="background: #0077FF; color: #fff;">💙 ВКонтакте</button>
+            <button class="btn-primary viral-share-btn" data-platform="copy" style="background: var(--bg-card-hover); border: 1px solid var(--border-glass-bright); color: #fff;">📋 Ссылка</button>
+          </div>
+        </div>
+
+        <!-- Card Preview Container -->
+        <div>
+          <h3 style="color: #fff; margin-bottom: 1rem; text-align: center;">Превью для Социальных Сетей</h3>
+          <div id="viral-card-preview"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ELEMENT DETAIL MODAL -->
+  <div id="element-modal" class="modal-overlay">
+    <div class="modal-container">
+      <button id="modal-close" class="modal-close">✕</button>
+      
+      <div class="modal-left">
+        <div class="canvas-wrapper">
+          <canvas id="atom-canvas"></canvas>
+        </div>
+        <div id="modal-symbol" class="modal-symbol-tag">--</div>
+      </div>
+
+      <div class="modal-right">
+        <div class="modal-header-info">
+          <span id="modal-group-badge" class="modal-group-badge">Группа</span>
+          <div class="modal-title-row">
+            <h2 id="modal-title">Название</h2>
+          </div>
+        </div>
+
+        <!-- Isotope Selector -->
+        <div class="isotope-selector">
+          <button class="iso-btn active" data-state="ground">🟢 В ресурсе</button>
+          <button class="iso-btn" data-state="excited">⚡ В драйве</button>
+          <button class="iso-btn" data-state="decay">🔴 В распаде</button>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stat-grid">
+          <div class="stat-box">
+            <div class="stat-label">Атомный номер</div>
+            <div id="stat-num" class="stat-value">--</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Атомная масса</div>
+            <div id="stat-mass" class="stat-value">--</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Валентность связей</div>
+            <div id="stat-valence" class="stat-value">--</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Резонанс (Hz)</div>
+            <div id="stat-freq" class="stat-value">--</div>
+          </div>
+        </div>
+
+        <!-- Dynamic Profile Description -->
+        <div class="description-box">
+          <p id="modal-description">Описание загружается...</p>
+        </div>
+
+        <!-- Full Profile Action Button -->
+        <button id="modal-full-profile-btn" class="btn-primary" style="margin-top: 1rem; width: 100%; background: linear-gradient(135deg, #00f0ff 0%, #a044ff 100%); color: #fff; font-weight: 700;">
+          📖 Открыть полный психологический портрет (Все 6 разделов + Быт)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FULL PROFILE MODAL -->
+  <div id="full-profile-modal" class="modal-overlay" style="z-index: 1050;">
+    <div class="modal-container" style="max-width: 800px; max-height: 90vh; overflow-y: auto; display: block; padding: 2rem;">
+      <button id="full-profile-close" class="modal-close" style="top: 1.5rem; right: 1.5rem;">✕</button>
+      <h2 id="full-profile-title" style="color: var(--grp-metalloid); margin-bottom: 1.5rem; font-size: 1.5rem;">Портрет Элемента</h2>
+      <div id="full-profile-body"></div>
+    </div>
+  </div>
+
+  <!-- PAYMENT MODAL -->
+  <div id="payment-modal" class="modal-overlay" style="z-index: 1100;">
+    <div class="modal-container" style="max-width: 500px; display: block; padding: 2rem;">
+      <button id="payment-close" class="modal-close" style="top: 1.5rem; right: 1.5rem;">✕</button>
+      
+      <div id="pay-form-box">
+        <h2 style="color: #fff; margin-bottom: 0.4rem;">Оформление Вклада 💎</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Вы выбрали тариф: <strong id="pay-tier-title" style="color: var(--grp-metalloid);">--</strong></p>
+
+        <div style="background: rgba(255,255,255,0.04); border-radius: 12px; padding: 1.2rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+          <span style="color: var(--text-muted);">К оплате:</span>
+          <span id="pay-tier-price" style="font-size: 1.8rem; font-weight: 800; color: #fff;">0 ₽</span>
+        </div>
+
+        <label style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">Выберите способ оплаты:</label>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-bottom: 1.5rem;">
+          <div class="pay-method-pill active" data-method="sbp" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass-bright); border-radius: 10px; padding: 0.8rem; text-align: center; cursor: pointer; font-size: 0.9rem; color: #fff;">⚡️ СБП</div>
+          <div class="pay-method-pill" data-method="card" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass-bright); border-radius: 10px; padding: 0.8rem; text-align: center; cursor: pointer; font-size: 0.9rem; color: #fff;">💳 Карта МИР/Visa</div>
+          <div class="pay-method-pill" data-method="stars" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass-bright); border-radius: 10px; padding: 0.8rem; text-align: center; cursor: pointer; font-size: 0.9rem; color: #fff;">⭐️ Telegram Stars</div>
+          <div class="pay-method-pill" data-method="ton" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass-bright); border-radius: 10px; padding: 0.8rem; text-align: center; cursor: pointer; font-size: 0.9rem; color: #fff;">🪙 TON / Crypto</div>
+        </div>
+
+        <form id="payment-form">
+          <input type="email" required placeholder="Ваш Email для отправки чек-сертификата" class="search-input" style="width: 100%; margin-bottom: 1rem;">
+          <button type="submit" class="btn-primary" style="width: 100%; background: linear-gradient(135deg, #ffcc00 0%, #ff9933 100%); color: #000; font-weight: 800;">🚀 Подтвердить Вклад</button>
+        </form>
+      </div>
+
+      <div id="pay-result-box" style="display: none;"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data/elements.js"></script>
+  <script src="js/data/full_profiles.js"></script>
+  <script src="js/data/philosophy_content.js"></script>
+  <script src="js/engine/atom-canvas.js"></script>
+  <script src="js/engine/audio-synth.js"></script>
+  <script src="js/engine/reaction-engine.js"></script>
+  <script src="js/components/table.js"></script>
+  <script src="js/components/lab.js"></script>
+  <script src="js/components/team.js"></script>
+  <script src="js/components/quiz.js"></script>
+  <script src="js/components/matchmaking.js"></script>
+  <script src="js/components/support.js"></script>
+  <script src="js/components/viral.js"></script>
+  <script src="js/components/profile-modal.js"></script>
+  <script src="js/components/philosophy.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

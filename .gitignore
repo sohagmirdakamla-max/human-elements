@@ -1,0 +1,7 @@
+# Temp and scratch directories
+.tmp.drivedownload/
+.tmp.driveupload/
+scratch/
+.agents/
+.gemini/
+*.log
