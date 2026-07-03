@@ -387,6 +387,18 @@ class QuizComponent {
           <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.8rem;">
             Элемент личности: <strong>${primaryElem.name}</strong> (${primaryElem.groupName})
           </div>
+          
+          <div style="display: flex; gap: 0.6rem; justify-content: center; margin-top: 1.2rem; flex-wrap: wrap;">
+            <button class="btn-primary" style="background: linear-gradient(135deg, #ffcc00 0%, #ff9933 100%); color: #000; font-weight: 800; font-size: 0.85rem; padding: 0.6rem 1.2rem; width: auto;" onclick="window.quizComp.showPaywall(${primaryElem.num})">
+              🔓 Полный разбор (Premium)
+            </button>
+            <button class="btn-primary" style="background: linear-gradient(135deg, #ff3366 0%, #a044ff 100%); color: #fff; font-weight: 800; font-size: 0.85rem; padding: 0.6rem 1.2rem; width: auto;" onclick="window.quizComp.goToMatchmaking(${primaryElem.num})">
+              ❤️ Сравнить с партнером
+            </button>
+            <button class="btn-primary" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass-bright); color: #fff; font-weight: 800; font-size: 0.85rem; padding: 0.6rem 1.2rem; width: auto;" onclick="window.quizComp.goToSharing(${primaryElem.num})">
+              ✈️ Поделиться
+            </button>
+          </div>
         </div>
 
         <div style="padding: 2rem; background: var(--bg-card);">
@@ -662,6 +674,16 @@ class QuizComponent {
     if (matchNavBtn) matchNavBtn.click();
     if (window.matchComp) {
       window.matchComp.selectMyElement(elemNum);
+    }
+  }
+
+  goToSharing(elemNum) {
+    const viralNavBtn = document.querySelector('[data-tab=tab-viral]');
+    if (viralNavBtn) viralNavBtn.click();
+    const selector = document.getElementById('viral-elem-select');
+    if (selector) {
+      selector.value = elemNum;
+      selector.dispatchEvent(new Event('change'));
     }
   }
 }
